@@ -5,7 +5,7 @@ React-Study
 
 >  Node 14.0.0 혹은 상위 버전 및 npm 5.6 혹은 상위 버전이 필요합니다
 
-```console
+```ps
 npx create-react-app my-app
 cd my-app
 npm start
