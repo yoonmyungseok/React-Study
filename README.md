@@ -220,18 +220,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="js,result" data-slug-hash="gwoJeZ" data-user="gaearon" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/gaearon/pen/gwoJeZ">
-  Hello World in React</a> by Dan Abramov (<a href="https://codepen.io/gaearon">@gaearon</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="Hello World in React" src="https://codepen.io/gaearon/embed/gwoJeZ?default-tab=js%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/gaearon/pen/gwoJeZ">
-  Hello World in React</a> by Dan Abramov (<a href="https://codepen.io/gaearon">@gaearon</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<a href="https://codepen.io/gaearon/pen/gwoJeZ?editors=1010">CodePen에서 실행하기</a>
 
 위 함수는 setInterval() 콜백을 이용해 초마다 ReactDOM.render()를 호출합니다.
 
