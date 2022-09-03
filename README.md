@@ -166,3 +166,74 @@ const element = {
 ```
 
 이러한 객체를 “React 엘리먼트”라고 하며, 화면에서 보고 싶은 것을 나타내는 표현이라 생각하면 됩니다. React는 이 객체를 읽어서, DOM을 구성하고 최신 상태로 유지하는 데 사용합니다.
+
+#   엘리먼트 렌더링
+
+>   엘리먼트는 React 앱의 가장 작은 단위입니다.
+
+엘리먼트는 화면에 표시할 내용을 기술합니다.
+
+```javascript
+const element = <h1>Hello, world</h1>;
+```
+
+브라우저 DOM 엘리먼트와 달리 React 엘리먼트는 일반 객체이며(plain object) 쉽게 생성할 수 있습니다. React DOM은 React 엘리먼트와 일치하도록 DOM을 업데이트합니다.
+
+##  DOM에 엘리먼트 렌더링하기
+
+HTML 파일 어딘가에 <div>가 있다고 가정해 봅시다.
+
+```html
+<div id="root"></div>
+```
+
+이 안에 들어가는 모든 엘리먼트를 React DOM에서 관리하기 때문에 이것을 “루트(root)” DOM 노드라고 부릅니다.
+
+React로 구현된 애플리케이션은 일반적으로 하나의 루트 DOM 노드가 있습니다. React를 기존 앱에 통합하려는 경우 원하는 만큼 많은 수의 독립된 루트 DOM 노드가 있을 수 있습니다.
+
+React 엘리먼트를 루트 DOM 노드에 렌더링하려면 둘 다 ReactDOM.render()로 전달하면 됩니다.
+
+```javascript
+const element = <h1>Hello, world</h1>;
+ReactDOM.render(element, document.getElementById('root'));
+```
+
+##  렌더링 된 엘리먼트 업데이트하기
+
+React 엘리먼트는 불변객체입니다. 엘리먼트를 생성한 이후에는 해당 엘리먼트의 자식이나 속성을 변경할 수 없습니다. 엘리먼트는 영화에서 하나의 프레임과 같이 특정 시점의 UI를 보여줍니다.
+
+지금까지 소개한 내용을 바탕으로 하면 UI를 업데이트하는 유일한 방법은 새로운 엘리먼트를 생성하고 이를 ReactDOM.render()로 전달하는 것입니다.
+
+예시로 똑딱거리는 시계를 살펴보겠습니다.
+
+```javascript
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+```
+
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="js,result" data-slug-hash="gwoJeZ" data-user="gaearon" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/gaearon/pen/gwoJeZ">
+  Hello World in React</a> by Dan Abramov (<a href="https://codepen.io/gaearon">@gaearon</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Hello World in React" src="https://codepen.io/gaearon/embed/gwoJeZ?default-tab=js%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/gaearon/pen/gwoJeZ">
+  Hello World in React</a> by Dan Abramov (<a href="https://codepen.io/gaearon">@gaearon</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+위 함수는 setInterval() 콜백을 이용해 초마다 ReactDOM.render()를 호출합니다.
+
+>   실제로 대부분의 React 앱은 ReactDOM.render()를 한 번만 호출합니다. 
+
